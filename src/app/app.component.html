@@ -177,6 +177,18 @@
   }
 </style>
 
+<header class="app-header" role="banner">
+  <div class="app-header__inner">
+    <a class="app-brand" routerLink="/">LearnTracker</a>
+    <nav class="app-nav" aria-label="Primary">
+      <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">
+        Home
+      </a>
+      <a routerLink="/about" routerLinkActive="is-active">About</a>
+    </nav>
+  </div>
+</header>
+
 <main class="main">
   <div class="content">
     <div class="left-side">
