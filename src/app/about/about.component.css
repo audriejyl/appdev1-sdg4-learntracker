@@ -15,6 +15,17 @@
   color: #4b5563;
 }
 
+.back-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  text-decoration: none;
+  color: #2563eb;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
 .card {
   margin-top: 1rem;
   padding: 1rem;
