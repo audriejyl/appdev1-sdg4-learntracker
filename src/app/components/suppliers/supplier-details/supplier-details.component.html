@@ -1,0 +1,12 @@
+<h2>Supplier Details</h2>
+
+<ng-container *ngIf="supplier">
+
+  <p>ID: <input [(ngModel)]="supplier.id" disabled></p>
+  <p>Name: <input [(ngModel)]="supplier.supplierName"></p>
+  <p>Contact: <input [(ngModel)]="supplier.contactPerson"></p>
+
+  <button (click)="save()">Save</button>
+  <button (click)="back()">Back</button>
+
+</ng-container>
