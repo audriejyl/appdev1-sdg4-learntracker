@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 export type Supplier = {
   id: number;
@@ -22,6 +23,9 @@ export class SupplierService {
     { id: 10, supplierName: 'TeacherFirst Resources', contactPerson: 'Oliver King' },
   ];
 
+  private suppliersSubject = new BehaviorSubject<Supplier[]>(this.suppliers);
+  suppliers$ = this.suppliersSubject.asObservable();
+
   getSuppliers(): Supplier[] {
     return this.suppliers;
   }
@@ -32,8 +36,11 @@ export class SupplierService {
 
   updateSupplier(updated: Supplier): void {
     const index = this.suppliers.findIndex(s => s.id === updated.id);
+
     if (index !== -1) {
-      this.suppliers[index] = updated;
+      this.suppliers[index] = { ...updated };
+
+      this.suppliersSubject.next([...this.suppliers]);
     }
   }
 }
