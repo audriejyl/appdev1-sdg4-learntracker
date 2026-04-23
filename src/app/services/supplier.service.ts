@@ -6,9 +6,7 @@ export type Supplier = {
   contactPerson: string;
 };
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class SupplierService {
 
   private suppliers: Supplier[] = [
@@ -21,7 +19,7 @@ export class SupplierService {
     { id: 7, supplierName: 'Inclusive Learning Tools', contactPerson: 'Isabella Rivera' },
     { id: 8, supplierName: 'SchoolTech Essentials', contactPerson: 'Lucas Martin' },
     { id: 9, supplierName: 'GreenClass Supplies', contactPerson: 'Amelia Davis' },
-    { id: 10, supplierName: 'TeacherFirst Resources', contactPerson: 'Oliver King' }
+    { id: 10, supplierName: 'TeacherFirst Resources', contactPerson: 'Oliver King' },
   ];
 
   getSuppliers(): Supplier[] {
@@ -30,5 +28,12 @@ export class SupplierService {
 
   getSupplierById(id: number): Supplier | undefined {
     return this.suppliers.find(s => s.id === id);
+  }
+
+  updateSupplier(updated: Supplier): void {
+    const index = this.suppliers.findIndex(s => s.id === updated.id);
+    if (index !== -1) {
+      this.suppliers[index] = updated;
+    }
   }
 }
