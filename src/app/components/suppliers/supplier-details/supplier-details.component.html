@@ -1,0 +1,100 @@
+<div class="page-wrapper">
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="detail-card" *ngIf="supplier; else notFound">
+
+    <!-- Header -->
+    <div class="card-header">
+      <button class="back-btn" (click)="back()">
+        ← Back
+      </button>
+      <div class="header-title">
+        <span class="header-icon">🏢</span>
+        <div>
+          <h2>Supplier Details</h2>
+          <p>Edit and manage supplier information</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <form class="detail-form" (ngSubmit)="save()">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Supplier ID</label>
+          <div class="input-wrapper">
+            <span class="input-icon">#</span>
+            <input
+              type="text"
+              [(ngModel)]="supplier.id"
+              name="id"
+              disabled
+              class="input-disabled"
+            />
+          </div>
+          <span class="field-hint">Auto-generated, read-only</span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Supplier Name</label>
+          <div class="input-wrapper">
+            <span class="input-icon">🏷</span>
+            <input
+              type="text"
+              [(ngModel)]="supplier.supplierName"
+              name="supplierName"
+              placeholder="Enter supplier name"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Contact Person</label>
+          <div class="input-wrapper">
+            <span class="input-icon">👤</span>
+            <input
+              type="text"
+              [(ngModel)]="supplier.contactPerson"
+              name="contactPerson"
+              placeholder="Enter contact person's name"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Save success toast -->
+      <div class="toast" *ngIf="saveSuccess">
+        ✅ Changes saved successfully!
+      </div>
+
+      <!-- Actions -->
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" (click)="back()">
+          Cancel
+        </button>
+        <button type="submit" class="btn-primary">
+          💾 Save Changes
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+
+  <ng-template #notFound>
+    <div class="not-found-card">
+      <span class="not-found-icon">🔍</span>
+      <h3>Supplier Not Found</h3>
+      <p>We couldn't find a supplier with that ID.</p>
+      <button class="btn-primary" (click)="back()">← Go Back</button>
+    </div>
+  </ng-template>
+
+</div>

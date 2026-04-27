@@ -1,0 +1,25 @@
+<h2>Suppliers List</h2>
+
+<table border="1" cellpadding="10">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Supplier Name</th>
+      <th>Contact Person</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let supplier of suppliers">
+      <td>{{ supplier.id }}</td>
+      <td>{{ supplier.supplierName }}</td>
+      <td>{{ supplier.contactPerson }}</td>
+      <td>
+        <button (click)="viewSupplierDetails(supplier.id)">
+          View
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
