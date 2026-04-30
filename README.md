@@ -28,3 +28,16 @@ We chose SDG 4 because education is essential for personal and community develop
 ```bash
 npm install
 ng serve
+```
+
+## 🧪 Testing
+```bash
+npm test
+```
+
+## 🚀 Local Run
+Run the Angular development server and open the app in your browser:
+
+```bash
+npm start
+```
