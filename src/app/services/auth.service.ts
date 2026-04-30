@@ -30,7 +30,7 @@ export class AuthService {
    * @returns true if password meets minimum requirements, false otherwise
    */
   private isStrongPassword(password: string): boolean {
-    return password && password.length >= 6;
+    return !!password && password.length >= 6;
   }
 
   register(email: string, password: string): boolean {

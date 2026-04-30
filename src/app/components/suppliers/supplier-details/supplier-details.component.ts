@@ -9,7 +9,7 @@ import { Supplier, SupplierService } from '../../../services/supplier.service';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './supplier-details.component.html',
-  styleUrls: ['./supplier-details.component.css'],
+  styleUrls: ['./supplier-details.css'],
 })
 export class SupplierDetailsComponent {
 
