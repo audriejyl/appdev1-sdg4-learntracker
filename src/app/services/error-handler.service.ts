@@ -58,7 +58,7 @@ export class ErrorHandlerService {
    */
   dismissError(errorId: string): void {
     const currentErrors = this.errors$.getValue();
-    this.errors$.next(currentErrors.filter(e => e.id !== errorId));
+    this.errors$.next(currentErrors.filter((e: AppError) => e.id !== errorId));
   }
 
   /**

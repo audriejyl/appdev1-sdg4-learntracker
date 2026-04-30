@@ -19,7 +19,7 @@ export function isValidEmail(email: string): boolean {
  * @returns true if password meets requirements
  */
 export function isStrongPassword(password: string, minLength: number = 6): boolean {
-  return password && password.length >= minLength;
+  return password !== '' && password.length >= minLength;
 }
 
 /**
