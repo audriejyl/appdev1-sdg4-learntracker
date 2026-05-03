@@ -11,17 +11,17 @@ export type Supplier = {
 export class SupplierService {
 
   private suppliers: Supplier[] = [
-    { id: 1, supplierName: 'BrightPath Learning Supplies', contactPerson: 'Ava Chen' },
-    { id: 2, supplierName: 'EduWorks Stationery Co.', contactPerson: 'Noah Patel' },
-    { id: 3, supplierName: 'FutureSkills Books & More', contactPerson: 'Mia Santos' },
-    { id: 4, supplierName: 'Classroom Corner', contactPerson: 'Ethan Brooks' },
-    { id: 5, supplierName: 'STEM Starter Kits', contactPerson: 'Sophia Nguyen' },
-    { id: 6, supplierName: 'ReadAhead Distributors', contactPerson: 'Liam Johnson' },
-    { id: 7, supplierName: 'Inclusive Learning Tools', contactPerson: 'Isabella Rivera' },
-    { id: 8, supplierName: 'SchoolTech Essentials', contactPerson: 'Lucas Martin' },
-    { id: 9, supplierName: 'GreenClass Supplies', contactPerson: 'Amelia Davis' },
-    { id: 10, supplierName: 'TeacherFirst Resources', contactPerson: 'Oliver King' },
-  ];
+  { id: 1, supplierName: 'Introduction to Programming', contactPerson: 'Instructor: John Cruz' },
+  { id: 2, supplierName: 'Introduction to Application Development', contactPerson: 'Instructor: Maria Santos' },
+  { id: 3, supplierName: 'Wireless and Mobile Computing', contactPerson: 'Instructor: Daniel Reyes' },
+  { id: 4, supplierName: 'Scaling Networks', contactPerson: 'Instructor: Angela Lopez' },
+  { id: 5, supplierName: 'System Integration and Architecture', contactPerson: 'Instructor: Mark Dela Cruz' },
+  { id: 6, supplierName: 'Information Management and Database Systems', contactPerson: 'Instructor: Carla Mendoza' },
+  { id: 7, supplierName: 'Human Computer Interaction', contactPerson: 'Instructor: Leo Ramos' },
+  { id: 8, supplierName: 'Data Structures and Algorithm', contactPerson: 'Instructor: Nina Castillo' },
+  { id: 9, supplierName: 'Operating System', contactPerson: 'Instructor: Kevin Tan' },
+  { id: 10, supplierName: 'Server Administration', contactPerson: 'Instructor: Sofia Garcia' },
+];
 
   private suppliersSubject = new BehaviorSubject<Supplier[]>(this.suppliers);
   suppliers$ = this.suppliersSubject.asObservable();

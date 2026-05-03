@@ -10,10 +10,10 @@
         ← Back
       </button>
       <div class="header-title">
-        <span class="header-icon">🏢</span>
+        <span class="header-icon">📚</span>
         <div>
-          <h2>Supplier Details</h2>
-          <p>Edit and manage supplier information</p>
+          <h2>Course Details</h2>
+          <p>Edit and manage course information</p>
         </div>
       </div>
     </div>
@@ -22,7 +22,7 @@
 
       <div class="form-row">
         <div class="form-group">
-          <label>Supplier ID</label>
+          <label>Course ID</label>
           <div class="input-wrapper">
             <span class="input-icon">#</span>
             <input
@@ -39,14 +39,14 @@
 
       <div class="form-row">
         <div class="form-group">
-          <label>Supplier Name</label>
+          <label>Course Title</label>
           <div class="input-wrapper">
             <span class="input-icon">🏷</span>
             <input
               type="text"
               [(ngModel)]="supplier.supplierName"
               name="supplierName"
-              placeholder="Enter supplier name"
+              placeholder="Enter course title"
             />
           </div>
         </div>
@@ -54,14 +54,14 @@
 
       <div class="form-row">
         <div class="form-group">
-          <label>Contact Person</label>
+          <label>Instructor</label>
           <div class="input-wrapper">
             <span class="input-icon">👤</span>
             <input
               type="text"
               [(ngModel)]="supplier.contactPerson"
               name="contactPerson"
-              placeholder="Enter contact person's name"
+              placeholder="Enter instructor name"
             />
           </div>
         </div>
@@ -87,8 +87,8 @@
   <ng-template #notFound>
     <div class="not-found-card">
       <span class="not-found-icon">🔍</span>
-      <h3>Supplier Not Found</h3>
-      <p>We couldn't find a supplier with that ID.</p>
+      <h3>Course Not Found</h3>
+      <p>We couldn't find a course with that ID.</p>
       <button class="btn-primary" (click)="back()">← Go Back</button>
     </div>
   </ng-template>
