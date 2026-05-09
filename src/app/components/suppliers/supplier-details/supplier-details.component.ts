@@ -26,10 +26,16 @@ export class SupplierDetailsComponent {
   }
 
   save() {
-    if (this.supplier) {
+    if (!this.supplier) return;
+
+    try {
       this.supplierService.updateSupplier(this.supplier);
       this.saveSuccess = true;
-      setTimeout(() => (this.saveSuccess = false), 3000);
+      setTimeout(() => {
+        this.router.navigate(['/suppliers']);
+      }, 1500);
+    } catch (err) {
+      console.error('Save failed', err);
     }
   }
 

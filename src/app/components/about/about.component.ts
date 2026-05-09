@@ -12,4 +12,3 @@ export class AboutComponent {
   sdgTitle = 'SDG 4: Quality Education';
   appName = 'LearnTracker';
 }
-

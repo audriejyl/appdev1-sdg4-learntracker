@@ -1,30 +1,23 @@
 <div class="page-wrapper">
-
   <div class="blob blob-1"></div>
   <div class="blob blob-2"></div>
-
   <div class="detail-card" *ngIf="supplier; else notFound">
-
     <div class="card-header">
       <button class="back-btn" (click)="back()">
-        ← Back
+        &larr; Back
       </button>
       <div class="header-title">
-        <span class="header-icon">📚</span>
         <div>
           <h2>Course Details</h2>
           <p>Edit and manage course information</p>
         </div>
       </div>
     </div>
-
     <form class="detail-form" (ngSubmit)="save()">
-
       <div class="form-row">
         <div class="form-group">
           <label>Course ID</label>
           <div class="input-wrapper">
-            <span class="input-icon">#</span>
             <input
               type="text"
               [(ngModel)]="supplier.id"
@@ -36,12 +29,10 @@
           <span class="field-hint">Auto-generated, read-only</span>
         </div>
       </div>
-
       <div class="form-row">
         <div class="form-group">
           <label>Course Title</label>
           <div class="input-wrapper">
-            <span class="input-icon">🏷</span>
             <input
               type="text"
               [(ngModel)]="supplier.supplierName"
@@ -51,12 +42,10 @@
           </div>
         </div>
       </div>
-
       <div class="form-row">
         <div class="form-group">
           <label>Instructor</label>
           <div class="input-wrapper">
-            <span class="input-icon">👤</span>
             <input
               type="text"
               [(ngModel)]="supplier.contactPerson"
@@ -68,29 +57,25 @@
       </div>
 
       <div class="toast" *ngIf="saveSuccess">
-        ✅ Changes saved successfully!
+        Changes saved successfully!
       </div>
 
       <div class="form-actions">
         <button type="button" class="btn-secondary" (click)="back()">
           Cancel
         </button>
-        <button type="submit" class="btn-primary">
-          💾 Save Changes
+        <button type="submit" class="btn-primary" (click)="save()" style="color: #ffffff; background-color: #2563eb; padding: 10px 24px; border: none; border-radius: 8px; font-size: 15px; cursor: pointer;">
+          Save
         </button>
       </div>
 
     </form>
-
   </div>
-
   <ng-template #notFound>
     <div class="not-found-card">
-      <span class="not-found-icon">🔍</span>
       <h3>Course Not Found</h3>
       <p>We couldn't find a course with that ID.</p>
-      <button class="btn-primary" (click)="back()">← Go Back</button>
+      <button class="btn-primary" (click)="back()">&larr; Go Back</button>
     </div>
   </ng-template>
-
 </div>

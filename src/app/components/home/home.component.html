@@ -3,7 +3,7 @@
   <div class="blob blob-2"></div>
 
   <div class="brand">
-    <span class="brand-icon">📚</span>
+    <span class="brand-icon"></span>
     <div>
       <h1 class="brand-name">LearnTracker</h1>
       <span class="brand-tag">SDG 4 · Quality Education</span>
@@ -30,7 +30,7 @@
       <div class="form-group">
         <label for="reg-password">Password</label>
         <div class="input-wrap">
-          <span class="icon">🔒</span>
+          <span class="icon"></span>
           <input id="reg-password" type="password" [(ngModel)]="password"
             name="password" placeholder="Create a password" required />
         </div>
@@ -39,14 +39,14 @@
       <div class="form-group">
         <label for="reg-confirm">Confirm Password</label>
         <div class="input-wrap">
-          <span class="icon">🔒</span>
+          <span class="icon"></span>
           <input id="reg-confirm" type="password" [(ngModel)]="confirmPassword"
             name="confirmPassword" placeholder="Re-enter your password" required />
         </div>
       </div>
 
       <div *ngIf="errorMessage" class="alert alert-error">⚠ {{ errorMessage }}</div>
-      <div *ngIf="successMessage" class="alert alert-success">✅ {{ successMessage }}</div>
+      <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
 
       <button type="submit" class="btn-primary" [disabled]="isLoading">
         <span *ngIf="!isLoading">Create Account</span>
