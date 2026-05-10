@@ -1,0 +1,104 @@
+nav {
+  background: linear-gradient(135deg, #60d3ad 0%, #764ba2 100%);
+  padding: 10px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+  margin: 0;
+  border-radius: 0; /* full width clean look */
+
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;   /* makes it stick on top */
+  top: 0;
+  left: 0;
+  width: 100%;       /* FULL WIDTH */
+  z-index: 1000;
+
+  overflow: hidden;
+}
+
+/* Shine hover effect */
+nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+nav:hover::before {
+  left: 100%;
+}
+
+/* Links */
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 8px;
+  padding: 8px 14px;
+  border-radius: 20px;
+
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  position: relative;
+  z-index: 1;
+
+  transition: all 0.3s ease;
+}
+
+/* underline animation */
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* hover effect */
+nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* active link */
+nav a.active {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+nav a.active::after {
+  width: 100%;
+  background: #ffd700;
+}
+
+/* IMPORTANT: prevent content hiding under fixed navbar */
+body {
+  padding-top: 60px;
+}
