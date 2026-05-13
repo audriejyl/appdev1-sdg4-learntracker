@@ -1,0 +1,145 @@
+
+:host {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  background: #f0fdfa;
+  padding: 48px 24px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-wrapper::before,
+.page-wrapper::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-wrapper::before {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #5eead4, #0d9488);
+  top: -150px;
+  left: -150px;
+}
+
+.page-wrapper::after {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #fcd34d, #f59e0b);
+  bottom: -100px;
+  right: -100px;
+}
+
+.brand {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  margin: 0;
+  font-weight: 900;
+  color: #0f766e;
+}
+
+.brand-tag {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.card {
+  width: 100%;
+  max-width: 900px;
+  background: #fff;
+  border: 1px solid #ccfbf1;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(13, 148, 136, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #134e4a;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  color: #134e4a;
+  margin-top: 20px;
+}
+
+.card p {
+  color: #475569;
+  line-height: 1.7;
+}
+
+.card ul {
+  margin-top: 10px;
+  padding-left: 20px;
+  color: #475569;
+}
+
+.card li {
+  margin-bottom: 8px;
+}
+
+.home-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.home-actions a {
+  flex: 1;
+  text-align: center;
+  padding: 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid #ccfbf1;
+  color: #0d9488;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.home-actions a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(13, 148, 136, 0.15);
+  background: #f0fdfa;
+}
+
+@media (max-width: 768px) {
+  .brand-name {
+    font-size: 30px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .home-actions {
+    flex-direction: column;
+  }
+}

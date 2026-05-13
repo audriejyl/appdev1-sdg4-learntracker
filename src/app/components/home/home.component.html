@@ -1,0 +1,34 @@
+<main class="page-wrapper">
+
+  <article class="brand">
+    <h1 class="brand-name">{{ 'LearnTracker' | titlecase }}</h1>
+    <span class="brand-tag">{{ 'SDG 4 · Quality Education Platform' | titlecase }}</span>
+  </article>
+
+  <section class="card">
+
+    <h2>{{ 'Welcome to LearnTracker' | titlecase }}</h2>
+
+    <p>
+      LearnTracker is a learning management system that helps students,
+      teachers, and institutions track progress and improve education quality.
+    </p>
+
+    <h3>{{ 'What you can do' | titlecase }}:</h3>
+
+    <ul>
+      <li>📊 {{ 'Track learning progress' | titlecase }}</li>
+      <li>👩‍🏫 {{ 'Manage educators' | titlecase }}</li>
+      <li>📦 {{ 'Handle suppliers/resources' | titlecase }}</li>
+      <li>📈 {{ 'View analytics' | titlecase }}</li>
+    </ul>
+
+    <nav class="home-actions">
+      <a routerLink="/dashboard" class="action-link">Go to Dashboard</a>
+      <a routerLink="/suppliers" class="action-link">Manage Suppliers</a>
+      <a routerLink="/about" class="action-link">About System</a>
+    </nav>
+
+  </section>
+
+</main>

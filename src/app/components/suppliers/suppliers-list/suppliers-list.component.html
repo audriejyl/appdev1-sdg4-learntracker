@@ -1,0 +1,100 @@
+<main class="container">
+
+  <section class="card-shell">
+    <header class="header">
+      <h2>Courses</h2>
+      <div class="header-actions">
+        <input
+          type="text"
+          class="search-box"
+          placeholder="Search courses..."
+          [(ngModel)]="searchTerm"
+        />
+        <button class="add-btn" (click)="openAddModal()">+ Add Course</button>
+      </div>
+    </header>
+
+    <section class="suppliers-list">
+      <div *ngIf="filteredSuppliers.length > 0; else empty" class="suppliers-container">
+        <!-- Parent passes supplier data to child via @Input -->
+        <!-- Parent receives events from child via @Output -->
+        <app-supplier-item
+          *ngFor="let supplier of filteredSuppliers"
+          [supplier]="supplier"
+          [searchTerm]="searchTerm"
+          (viewDetails)="onViewDetails($event)"
+          (deleteSupplier)="onDeleteSupplier($event)"
+        ></app-supplier-item>
+      </div>
+
+      <ng-template #empty>
+        <article class="empty-state">
+          <p>No courses found matching your search.</p>
+        </article>
+      </ng-template>
+    </section>
+  </section>
+
+</main>
+
+<!-- Add Course Modal -->
+<div class="modal-overlay" *ngIf="showAddModal" (click)="closeAddModal()">
+  <article class="modal" (click)="$event.stopPropagation()">
+    <header class="modal-header">
+      <h3>Add New Course</h3>
+      <button class="close-btn" (click)="closeAddModal()">✕</button>
+    </header>
+    <section class="modal-body">
+      <div class="form-group">
+        <label>Course Title <span class="required">*</span></label>
+        <input
+          type="text"
+          class="form-input"
+          placeholder="e.g. Data Structures and Algorithm"
+          [(ngModel)]="newCourse.supplierName"
+        />
+      </div>
+      <div class="form-group" style="margin-top: 14px;">
+        <label>Instructor</label>
+        <input
+          type="text"
+          class="form-input"
+          placeholder="e.g. Instructor: John Cruz"
+          [(ngModel)]="newCourse.contactPerson"
+        />
+      </div>
+    </section>
+    <footer class="modal-footer">
+      <button class="cancel-btn" (click)="closeAddModal()">Cancel</button>
+      <button
+        class="save-btn"
+        (click)="addCourse()"
+        [disabled]="!newCourse.supplierName"
+      >
+        Add Course
+      </button>
+    </footer>
+  </article>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal-overlay" *ngIf="showDeleteModal" (click)="closeDeleteModal()">
+  <article class="modal modal-sm" (click)="$event.stopPropagation()">
+    <header class="modal-header">
+      <h3>Delete Course</h3>
+      <button class="close-btn" (click)="closeDeleteModal()">✕</button>
+    </header>
+    <section class="modal-body">
+      <p class="delete-message">
+        Are you sure you want to delete <strong>{{ courseToDelete?.supplierName | titlecase }}</strong>?
+        This action cannot be undone.
+      </p>
+    </section>
+    <footer class="modal-footer">
+      <button class="cancel-btn" (click)="closeDeleteModal()">Cancel</button>
+      <button class="confirm-delete-btn" (click)="deleteCourse()">
+        Delete
+      </button>
+    </footer>
+  </article>
+</div>

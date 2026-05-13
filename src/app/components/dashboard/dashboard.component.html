@@ -1,0 +1,168 @@
+<main class="page-wrapper">
+  <section class="content">
+
+    <!-- Greeting Header with Semantic HTML -->
+    <header class="greeting-bar">
+      <article>
+        <h2>{{ greeting }}, Teacher!</h2>
+        <p class="date-label">{{ today | date: 'fullDate' }}</p>
+      </article>
+      <aside class="greeting-badges">
+        <span class="badge badge-teal">{{ totalCourses }} Courses</span>
+        <span class="badge badge-amber">{{ completedTodos() }}/{{ todos.length }} Tasks</span>
+      </aside>
+    </header>
+
+    <!-- Stat Cards -->
+    <section class="stat-cards">
+      <article class="stat-card">
+        <div class="stat-icon"></div>
+        <div class="stat-value">{{ totalCourses }}</div>
+        <div class="stat-label">Total Courses</div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-icon"></div>
+        <div class="stat-value">{{ completedTodos() }}</div>
+        <div class="stat-label">Tasks Done</div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-icon"></div>
+        <div class="stat-value">{{ pendingTodos() }}</div>
+        <div class="stat-label">Tasks Pending</div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-icon"></div>
+        <div class="stat-value">{{ announcements.length }}</div>
+        <div class="stat-label">Announcements</div>
+      </article>
+    </section>
+
+    <!-- Main Grid -->
+    <section class="main-grid">
+
+      <!-- To-Do List -->
+      <section class="panel">
+        <header class="panel-header">
+          <h3>Daily Tasks</h3>
+        </header>
+        <div class="todo-input-row">
+          <input
+            class="todo-input"
+            type="text"
+            placeholder="Add a new task..."
+            [(ngModel)]="newTodo"
+            (keyup.enter)="addTodo()"
+          />
+          <button class="add-todo-btn" (click)="addTodo()">+</button>
+        </div>
+        <ul class="todo-list">
+          <li *ngFor="let todo of todos" class="todo-item" [class.done]="todo.done">
+            <button class="todo-check" (click)="toggleTodo(todo)">
+              <span *ngIf="todo.done">✓</span>
+            </button>
+            <span class="todo-text">{{ todo.text }}</span>
+            <button class="todo-delete" (click)="deleteTodo(todo.id)">✕</button>
+          </li>
+        </ul>
+        <div class="todo-footer" *ngIf="todos.length > 0">
+          {{ completedTodos() }} of {{ todos.length }} completed
+        </div>
+        <div class="empty-state" *ngIf="todos.length === 0">
+          No tasks yet — add one above!
+        </div>
+      </section>
+
+      <!-- Courses Panel -->
+      <section class="panel">
+        <header class="panel-header">
+          <h3>{{ 'Courses' | titlecase }}</h3>
+          <a class="panel-link" routerLink="/suppliers">View All</a>
+        </header>
+        <ul class="course-list">
+          <li *ngFor="let supplier of suppliers.slice(0, 6)" class="course-item">
+            <div class="course-info">
+              <span class="course-name">{{ supplier.supplierName }}</span>
+              <span class="course-instructor">{{ supplier.contactPerson }}</span>
+            </div>
+            <button class="view-btn" (click)="viewCourse(supplier.id)">View</button>
+          </li>
+        </ul>
+        <div class="empty-state" *ngIf="suppliers.length === 0">
+          No courses yet.
+        </div>
+        <div class="panel-more" *ngIf="suppliers.length > 6">
+          +{{ suppliers.length - 6 }} more courses
+        </div>
+      </section>
+
+    </section>
+
+    <!-- Announcements -->
+    <section class="panel announcements-panel">
+      <div class="panel-header">
+        <h3>Announcements</h3>
+        <button class="post-btn" (click)="openAnnouncementForm()">+ Post</button>
+      </div>
+      <div class="announcements-grid">
+        <div *ngFor="let a of announcements" class="announcement-card">
+          <div class="announcement-top">
+            <span class="ann-tag" [ngClass]="getTagColor(a.tag)">{{ a.tag }}</span>
+            <button class="ann-delete" (click)="deleteAnnouncement(a.id)">✕</button>
+          </div>
+          <h4 class="ann-title">{{ a.title }}</h4>
+          <p class="ann-body">{{ a.body }}</p>
+          <div class="ann-dates">
+            <span class="ann-date-label">Posted:</span>
+            <span class="ann-date">{{ a.date }}</span>
+            <span class="ann-date-label" *ngIf="a.scheduledDate">Scheduled:</span>
+            <span class="ann-date ann-scheduled" *ngIf="a.scheduledDate">{{ a.scheduledDate }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="empty-state" *ngIf="announcements.length === 0">
+        No announcements yet.
+      </div>
+    </section>
+
+  </section>
+</main>
+
+<!-- Announcement Modal -->
+<div class="modal-overlay" *ngIf="showAnnouncementForm" (click)="closeAnnouncementForm()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3>Post Announcement</h3>
+      <button class="close-btn" (click)="closeAnnouncementForm()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Title <span class="required">*</span></label>
+        <input type="text" class="form-input" placeholder="e.g. Midterm Exam Schedule"
+               [(ngModel)]="newAnnouncement.title" />
+      </div>
+      <div class="form-group" style="margin-top:14px">
+        <label>Tag</label>
+        <select class="form-input" [(ngModel)]="newAnnouncement.tag">
+          <option *ngFor="let tag of tags" [value]="tag">{{ tag }}</option>
+        </select>
+      </div>
+      <div class="form-group" style="margin-top:14px">
+        <label>Announcement Date <span class="required">*</span></label>
+        <input type="date" class="form-input"
+               [(ngModel)]="newAnnouncement.scheduledDate" />
+      </div>
+      <div class="form-group" style="margin-top:14px">
+        <label>Message <span class="required">*</span></label>
+        <textarea class="form-input form-textarea" placeholder="Write your announcement here..."
+                  [(ngModel)]="newAnnouncement.body"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="cancel-btn" (click)="closeAnnouncementForm()">Cancel</button>
+      <button class="save-btn" (click)="postAnnouncement()"
+              [disabled]="!newAnnouncement.title || !newAnnouncement.body">
+        Post
+      </button>
+    </div>
+  </div>
+</div>

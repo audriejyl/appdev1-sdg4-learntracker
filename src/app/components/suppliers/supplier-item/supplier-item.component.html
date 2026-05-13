@@ -1,0 +1,21 @@
+<section class="supplier-item">
+  <div class="supplier-card">
+    <div class="supplier-header">
+      <h3 class="supplier-name">{{ supplier?.supplierName }}</h3>
+      <span class="supplier-id">ID: {{ supplier?.id }}</span>
+    </div>
+    
+    <p class="supplier-contact">
+      <strong>Contact:</strong> {{ supplier?.contactPerson }}
+    </p>
+    
+    <div class="supplier-actions">
+      <button (click)="onViewDetails()" class="btn btn-primary">
+        View Details
+      </button>
+      <button (click)="onDelete()" class="btn btn-danger">
+        Delete
+      </button>
+    </div>
+  </div>
+</section>

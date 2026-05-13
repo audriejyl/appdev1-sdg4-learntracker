@@ -1,0 +1,9 @@
+<nav>
+  <a routerLink="/home" routerLinkActive="active">Home</a> |
+  <a routerLink="/about" routerLinkActive="active">About</a> |
+  <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a> |
+  <a routerLink="/suppliers" routerLinkActive="active">Courses</a>
+  <span class="nav-spacer"></span>
+  <a *ngIf="!isLoggedIn" routerLink="/login" routerLinkActive="active">Login</a>
+  <button *ngIf="isLoggedIn" class="logout-button" (click)="logout()">Logout</button>
+</nav>
