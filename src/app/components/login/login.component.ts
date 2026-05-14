@@ -15,12 +15,22 @@ export class LoginComponent {
 
   email = '';
   password = '';
+
+  registerEmail = '';
+  registerPassword = '';
+
   isLoading = false;
   errorMsg = '';
 
-  constructor(private router: Router, private authService: AuthService) {}
+  showRegister = false;
+
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   login() {
+
     this.errorMsg = '';
 
     if (!this.email || !this.password) {
@@ -28,19 +38,55 @@ export class LoginComponent {
       return;
     }
 
-    this.isLoading = true;
+    const success = this.authService.login(
+      this.email,
+      this.password
+    );
 
-    setTimeout(() => {
-      this.isLoading = false;
+    if (success) {
 
-      const success = this.authService.login(this.email, this.password);
+      localStorage.setItem('user', this.email);
 
-      if (success) {
-        localStorage.setItem('user', this.email);
-        this.router.navigate(['/home']);
-      } else {
-        this.errorMsg = 'Invalid credentials';
-      }
-    }, 800);
+      this.router.navigate(['/home']);
+
+    } else {
+
+      this.errorMsg = 'Invalid credentials';
+
+    }
+  }
+
+  register() {
+
+    this.errorMsg = '';
+
+    if (!this.registerEmail || !this.registerPassword) {
+      this.errorMsg = 'Please enter email and password';
+      return;
+    }
+
+    const success = this.authService.register(
+      this.registerEmail,
+      this.registerPassword
+    );
+
+    if (success) {
+
+      alert('Registration successful!');
+
+      this.showRegister = false;
+
+      this.email = this.registerEmail;
+      this.password = this.registerPassword;
+
+      this.registerEmail = '';
+      this.registerPassword = '';
+
+    } else {
+
+      this.errorMsg =
+        'Invalid email, weak password, or user already exists';
+
+    }
   }
 }
